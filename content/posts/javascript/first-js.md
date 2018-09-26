@@ -1,4 +1,5 @@
 ---
+id: first-js
 title: First JS
 date: 2017-06-01
 ---

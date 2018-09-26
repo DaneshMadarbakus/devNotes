@@ -1,4 +1,5 @@
 ---
+id: first-post
 title: First post
 date: 2017-06-01
 ---

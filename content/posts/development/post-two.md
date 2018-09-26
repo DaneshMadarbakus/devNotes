@@ -1,4 +1,5 @@
 ---
+id: post-two
 title: Post two
 date: 2017-06-12
 ---

@@ -1,12 +1,13 @@
 import React from 'react';
 import Layout from '../components/Layout.js'
 import Link from 'next/link'
-import fetch from 'isomorphic-unfetch'
+// import fetch from 'isomorphic-unfetch'
 import SUMMARY_JSON from '../content/summary.json'
+import {getURL} from '../src/utils/content'
 
 const PostLink = (props) => (
     <li>
-        <Link as={`/p/${props.id}`} href={`/post?title=${props.title}`}>
+        <Link as={`/p/${props.id}`} href={`/post?title=${props.id}`}>
             <a>{props.title}</a>
         </Link>
     </li>
@@ -26,7 +27,7 @@ function Index(props) {
                                 {
                                   props.posts[category].map((post, i) => {
                                     return (
-                                      <PostLink key={i} id={post.title} title={post.title} />
+                                      <PostLink key={i} id={getURL(post.title)} title={post.title} />
                                     )
                                   })
                                 }
@@ -53,8 +54,6 @@ Index.getInitialProps = async function () {
             categories.push(postCategory);
         }
     }
-    
-
 
     return {
         posts: categorisedPosts,

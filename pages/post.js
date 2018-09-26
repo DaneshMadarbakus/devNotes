@@ -1,20 +1,52 @@
 import React from 'react';
 import { withRouter } from 'next/router'
 import Layout from '../components/Layout.js'
+import SUMMARY_JSON from '../content/summary.json'
 
-const Content = withRouter((props) => (
-    <div>
-        <h1>{props.router.query.title}</h1>
-        <p>This is the blog post content.</p>
-    </div>
-))
+// function Content(props) {
+//     // const currentPostSummary = posts.filter(function(post) {
+//     //     return post.id === pageId;
+//     // })
+//     // let currentPost = {};
+//     // console.log(`../${currentPostSummary[0].dir}/${currentPostSummary[0].base}`);
+//     // currentPost = require(`../${currentPostSummary[0].dir}/${currentPostSummary[0].base}.json`);
 
-const Page = (props) => (
-    <Layout>
-        <Content />
-    </Layout>
-)
+//     return (
+//         <div>
+//             {/* <h1>{pageTitle}</h1> */}
+//             <p>This is the blog post content.</p>
+//         </div>
+//     )
+// }
 
-Page.getInitialProps
+function Page(props) {
+    return (
+        <Layout>
+            {/* <Content pProps={props} /> */}
+            <p>{props.Iprops}</p>
+        </Layout>
+    )
+}
 
-export default Page
+
+Page.getInitialProps = async function (props) {
+    console.log(props.query.title);
+    const pageId = props.query.title;
+    const posts = Object.keys(SUMMARY_JSON.fileMap).map(function (key) {
+        return SUMMARY_JSON.fileMap[key];
+    });
+    const currentPostSummary = posts.filter(function (post) {
+        return post.id === pageId;
+    })[0];
+
+    // let currentPost = require(`../${currentPostSummary.dir}/${currentPostSummary.base}`);
+
+    // console.log(currentPost);
+
+    return {
+        Iprops: props.query.title
+    }
+}
+
+
+export default withRouter(Page)
