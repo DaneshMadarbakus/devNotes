@@ -1,5 +1,5 @@
-export function makeUrl(article) {
-    return `${article.dir.split('content').join('')}/${article.base.split('.json').join('')}`
+export function createCategories(posts) {
+    return 
 }
 
 export function filterPosts(summaryJson) {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'next/router'
 import Layout from '../components/Layout.js'
 
@@ -14,5 +14,7 @@ const Page = (props) => (
         <Content />
     </Layout>
 )
+
+Page.getInitialProps
 
 export default Page
