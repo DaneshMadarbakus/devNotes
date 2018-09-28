@@ -39,10 +39,10 @@ Page.getInitialProps = async function (props) {
         return post.id === pageId;
     })[0];
 
-    fetch(`../${currentPostSummary.dir}/${currentPostSummary.base}`)
-    .then(function(results){
-        console.log(results)
-    })
+    // fetch(`../${currentPostSummary.dir}/${currentPostSummary.base}`)
+    // .then(function(results){
+    //     console.log(results)
+    // })
 
     // console.log(currentPost);
 

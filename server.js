@@ -4,6 +4,7 @@ const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const SUMMARY_JSON = require('./content/summary.json')
 
 app.prepare()
 .then(() => {
@@ -12,6 +13,7 @@ app.prepare()
   server.get('/p/:id', (req, res) => {
     const actualPage = '/post'
     const queryParams = { title: req.params.id } 
+    console.log(SUMMARY_JSON)
     app.render(req, res, actualPage, queryParams)
   })
 
