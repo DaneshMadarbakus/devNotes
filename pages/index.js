@@ -7,9 +7,9 @@ import {getURL} from '../src/utils/content'
 
 const PostLink = (props) => (
     <li>
-        <Link as={`/p/${props.id}`} href={`/post?title=${props.id}`}>
-            <a>{props.title}</a>
-        </Link>
+        {/* <Link as={`/p/${props.id}`} href={`/post?title=${props.id}`}> */}
+            <a href={`/p/${props.id}`}>{props.title}</a>
+        {/* </Link> */}
     </li>
 )
 

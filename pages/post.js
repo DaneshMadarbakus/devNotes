@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'next/router'
 import Layout from '../components/Layout.js'
-import SUMMARY_JSON from '../content/summary.json'
+// import SUMMARY_JSON from '../content/summary.json'
 
 // function Content(props) {
 //     // const currentPostSummary = posts.filter(function(post) {
@@ -20,34 +20,21 @@ import SUMMARY_JSON from '../content/summary.json'
 // }
 
 function Page(props) {
+    console.log(props);
+
     return (
         <Layout>
             {/* <Content pProps={props} /> */}
-            <p>{props.Iprops}</p>
+            <p>{props.postContent.title}</p>
+            <div dangerouslySetInnerHTML={{ __html: props.postContent.bodyHtml }}></div>
         </Layout>
     )
 }
 
 
 Page.getInitialProps = async function (props) {
-    console.log(props.query.title);
-    const pageId = props.query.title;
-    const posts = Object.keys(SUMMARY_JSON.fileMap).map(function (key) {
-        return SUMMARY_JSON.fileMap[key];
-    });
-    const currentPostSummary = posts.filter(function (post) {
-        return post.id === pageId;
-    })[0];
-
-    // fetch(`../${currentPostSummary.dir}/${currentPostSummary.base}`)
-    // .then(function(results){
-    //     console.log(results)
-    // })
-
-    // console.log(currentPost);
-
     return {
-        Iprops: props.query.title
+        postContent: props.query.content
     }
 }
 
