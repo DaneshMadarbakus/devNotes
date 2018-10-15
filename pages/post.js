@@ -20,8 +20,7 @@ import Layout from '../components/Layout.js'
 // }
 
 function Page(props) {
-    console.log(props);
-
+    
     return (
         <Layout>
             {/* <Content pProps={props} /> */}
@@ -33,6 +32,7 @@ function Page(props) {
 
 
 Page.getInitialProps = async function (props) {
+    console.log(props.query.content);
     return {
         postContent: props.query.content
     }
